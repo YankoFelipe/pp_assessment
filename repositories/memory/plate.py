@@ -1,18 +1,17 @@
-from typing import List, Tuple
+from typing import List, Tuple, Union, Dict
 
 from flask import g
 
-from db import db, get_session
-
 from entities.plate import Plate
+
 
 class PlateRepository:
     def get_all(self) -> List[Plate]:
-        #session = get_session()
-        #print('session: ', session)
         return g.session.query(Plate).all()
 
-    def save(self, plate: Plate) -> Tuple[int, str]:
+    def save(self, plate: Plate) -> Tuple[Union[str, Dict], int]:
+        if g.session.query(Plate).filter(Plate.name == plate.name).first():
+            return "Plate already exists", 422
         g.session.add(plate)
         g.session.commit()
-        return plate.serialize()
+        return plate.serialize(), 200

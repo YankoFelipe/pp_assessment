@@ -6,7 +6,8 @@ from Levenshtein import distance
 
 from db import db
 
-format = "%Y-%m-%dT%H:%M:%S%Z%z"
+time_format = "%Y-%m-%dT%H:%M:%S%Z%z"
+
 
 class Plate(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -20,7 +21,7 @@ class Plate(db.Model):
     def serialize(self) -> Dict:
         return {
             "plate": self.name,
-            "timestamp": self.timestamp.strftime(format)
+            "timestamp": self.timestamp.strftime(time_format)
         }
 
     def unhypen(self) -> str:

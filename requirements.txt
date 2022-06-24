@@ -3,3 +3,4 @@ sqlalchemy==1.4.37
 python-levenshtein==0.12.2
 pytz==2022.1
 flask-sqlalchemy==2.5.1
+python-dotenv==0.20.0
