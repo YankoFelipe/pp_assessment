@@ -1,7 +1,6 @@
-import re
 import json
+import re
 from typing import Dict, Tuple
-
 
 from entities.plate import Plate
 from repositories.memory.plate import PlateRepository
