@@ -10,6 +10,7 @@ time_format = "%Y-%m-%dT%H:%M:%S%Z%z"
 
 
 class Plate(db.Model):
+    __tablename__ = "plates"
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(12), unique=True, nullable=False)
     timestamp = db.Column(db.TIMESTAMP(timezone=True), nullable=False)

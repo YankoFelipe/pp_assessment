@@ -1,9 +1,6 @@
-import os
-
 from flask import Flask
 
 from db import db
-# TODO: REMOVE THIS
 from entities.plate import Plate
 
 
@@ -17,11 +14,5 @@ def create_app():
 
 
 def setup_database(app):
-    # TODO: Remove this once db is tested
-    if os.path.isfile('/tmp/test.db'):
-        os.remove('/tmp/test.db')
     with app.app_context():
         db.create_all()
-        plate = Plate('as-a123')
-        db.session.add(plate)
-        db.session.commit()
